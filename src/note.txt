@@ -1,0 +1,93 @@
+Typescript DOC:
+https://www.typescriptlang.org/docs/handbook/2/basic-types.html
+
+Current Tutorial URL:
+https://www.youtube.com/watch?v=FJDVKeh7RJI
+
+let name: string;
+let age: number | string;/* number AND string */
+let isStudent: boolean;
+let hobbies: string[];/* array of strings */
+let role:[number,string];/* tuple */
+let whatever: any; /* THIS IS NOT RECOMMENDED, WHY USE TYPESCRIPT IN THE FIRST PLACE? */
+let whomever: unknown; /* this is recommended over any;, if you don't know which type it's going to be */
+
+type Person = {
+  name: string;
+  age?: number;/* optional */
+}
+let person: Person = {
+  name: "Hyejoo",
+  age: 25
+};
+
+let lotsOfPeople:Person[]; /* array of Person */
+
+name = 'hyejoo';
+role = [3,"ed"]
+
+function printName(name:string) {
+  console.log(name);
+}
+
+let printName2: (name:string/* parameters it take and type of it */) => void/* for this case this function is not returning anything, so return type:void */;
+
+/* diff btwn void and never -> void returns undefined, never returns nothing. if you don't know if there is even going to be a return, use never. */
+
+type/interface => ALIAS
+
+* type > can be extended like this:
+
+type X = {
+  a: string;
+  b: number;
+}
+
+type Y = X & {
+  c: string;
+  d: number;
+}
+
+let y: Y = {
+  c:"string",
+  d:25
+} <- this will throw and error, because Y extends X which means Y also require a and b.
+
+* interface > can be extended like this:
+
+interface Person {
+  name: string;
+  age?: number;
+}
+
+interface Guy extends Person {
+  profession: string;
+}
+
+* They can also be extended from each other:
+
+interface Person {
+  name: string;
+  age?: number;
+}
+
+type Y = Person & {
+  c: string;
+  d: number;
+}
+
+---- or ----
+
+type X = {
+  a: string;
+  b: number;
+}
+
+interface Guy extends X {
+  profession: string;
+}
+
+// but I still don't know the difference between those two..? wtf why do they both exist?
+
+wtf is a useReducer.. go to tutorial:
+https://www.youtube.com/watch?v=HptuMAUaNGk
